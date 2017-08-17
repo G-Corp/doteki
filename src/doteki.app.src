@@ -7,7 +7,7 @@
 
   , {maintainers, ["Gregoire Lejeune"]}
   , {licenses, ["BSD-3"]}
-  , {links, [{"Github", "https://github.com/botsunit/doteki"}]}
+  , {links, [{"Github", "https://github.com/G-Corp/doteki"}]}
   , {files, ["src/*"
              , "lib/*"
              , "Makefile"
