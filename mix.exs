@@ -4,7 +4,7 @@ defmodule Doteki.Mixfile do
   def project do
     [
       app: :doteki,
-      version: "1.0.7",
+      version: "1.1.0",
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -22,7 +22,7 @@ defmodule Doteki.Mixfile do
 
   defp deps do
     [
-      {:bucs, "~> 1.0.11"}
+      {:bucs, git: "https://github.com/G-Corp/bucs.git", branch: "master"}
     ]
   end
 
