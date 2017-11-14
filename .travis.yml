@@ -1,0 +1,22 @@
+language: elixir
+
+dist: trusty
+
+sudo: required
+
+notifications:
+  email: false
+
+elixir:
+  - 1.4.5
+  - 1.5.1
+
+otp_release:
+  - 20.0
+  - 19.3
+  - 18.3
+
+script:
+  - mix local.rebar --force
+  - mix local.hex --force
+  - make dist
