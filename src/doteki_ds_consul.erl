@@ -47,6 +47,7 @@ build_response_list([#{key := Key}|Rest], Acc) ->
     Rest,
     add_key(bucstring:split(Key, "/"), Acc)).
 
+add_key([], Acc) -> Acc;
 add_key([Key, ""], Acc) ->
   AKey = bucs:to_atom(Key),
   case lists:keyfind(AKey, 1, Acc) of
