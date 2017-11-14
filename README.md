@@ -243,7 +243,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 <table width="100%" border="0" summary="list of modules">
-<tr><td><a href="https://github.com/botsunit/doteki/blob/datasource/doc/doteki.md" class="module">doteki</a></td></tr>
-<tr><td><a href="https://github.com/botsunit/doteki/blob/datasource/doc/doteki_ds.md" class="module">doteki_ds</a></td></tr>
-<tr><td><a href="https://github.com/botsunit/doteki/blob/datasource/doc/doteki_ds_consul.md" class="module">doteki_ds_consul</a></td></tr></table>
+<tr><td><a href="https://github.com/G-Corp/doteki/blob/datasource/doc/doteki.md" class="module">doteki</a></td></tr>
+<tr><td><a href="https://github.com/G-Corp/doteki/blob/datasource/doc/doteki_ds.md" class="module">doteki_ds</a></td></tr>
+<tr><td><a href="https://github.com/G-Corp/doteki/blob/datasource/doc/doteki_ds_consul.md" class="module">doteki_ds_consul</a></td></tr></table>
 
