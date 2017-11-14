@@ -41,11 +41,11 @@ build_response_list([], Acc) ->
 build_response_list([#{key := Key, value := Value}|Rest], Acc) ->
   build_response_list(
     Rest,
-    add_value(string:split(Key, "/"), Value, Acc));
+    add_value(bucstring:split(Key, "/"), Value, Acc));
 build_response_list([#{key := Key}|Rest], Acc) ->
   build_response_list(
     Rest,
-    add_key(string:split(Key, "/"), Acc)).
+    add_key(bucstring:split(Key, "/"), Acc)).
 
 add_key([Key, ""], Acc) ->
   AKey = bucs:to_atom(Key),
@@ -55,13 +55,13 @@ add_key([Key, ""], Acc) ->
     {_, _} ->
       Acc
   end;
-add_key([Key, Rest], Acc) ->
+add_key([Key|Rest], Acc) ->
   AKey = bucs:to_atom(Key),
   case lists:keyfind(AKey, 1, Acc) of
     false ->
-      [{AKey, add_key(string:split(Rest, "/"), [])}|Acc];
+      [{AKey, add_key(Rest, [])}|Acc];
     {AKey, DeepAcc} ->
-      lists:keyreplace(AKey, 1, Acc, {AKey, add_key(string:split(Rest, "/"), DeepAcc)})
+      lists:keyreplace(AKey, 1, Acc, {AKey, add_key(Rest, DeepAcc)})
   end.
 
 add_value([Key], Value, Acc) ->
@@ -72,13 +72,13 @@ add_value([Key], Value, Acc) ->
     {AKey, _} ->
       lists:keyreplace(AKey, 1, Acc, {AKey, Value})
   end;
-add_value([Key, Rest], Value, Acc) ->
+add_value([Key|Rest], Value, Acc) ->
   AKey = bucs:to_atom(Key),
   case lists:keyfind(AKey, 1, Acc) of
     false ->
-      [{AKey, add_value(string:split(Rest, "/"), Value, [])}|Acc];
+      [{AKey, add_value(Rest, Value, [])}|Acc];
     {AKey, DeepAcc} ->
-      lists:keyreplace(AKey, 1, Acc, {AKey, add_value(string:split(Rest, "/"), Value, DeepAcc)})
+      lists:keyreplace(AKey, 1, Acc, {AKey, add_value(Rest, Value, DeepAcc)})
   end.
 
 -ifdef(TEST).
