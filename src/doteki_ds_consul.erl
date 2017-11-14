@@ -10,9 +10,11 @@
          , get_env/3
         ]).
 
+% @hidden
 init() ->
   {ok, ok}.
 
+% @hidden
 get_env(Path, Default, State) ->
   case build_path(Path) of
     [] ->

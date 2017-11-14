@@ -16,7 +16,8 @@ defmodule Doteki.Mixfile do
   def application do
     [
        applications: [],
-       env: []
+       env: [],
+       mod: {:doteki_app, []}
     ]
   end
 

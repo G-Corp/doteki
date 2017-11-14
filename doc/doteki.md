@@ -39,7 +39,7 @@ Return the result of <tt>get_env/3</tt> as term.</td></tr><tr><td valign="top"><
 Return the evironment value from the environment variable, or the configuration file, or 
 the default value.</td></tr><tr><td valign="top"><a href="#get_env-3">get_env/3</a></td><td> 
 Return the evironment value from the environment variable, or the configuration file, or 
-the default value.</td></tr><tr><td valign="top"><a href="#reload_env-0">reload_env/0</a></td><td>
+the default value.</td></tr><tr><td valign="top"><a href="#register_datasource-1">register_datasource/1</a></td><td></td></tr><tr><td valign="top"><a href="#reload_env-0">reload_env/0</a></td><td>
 Reload the configuration file passed to the VM (<tt>-config</tt> option).</td></tr><tr><td valign="top"><a href="#set_env-2">set_env/2</a></td><td> 
 Load a configuration for the given app with the given configuration.</td></tr><tr><td valign="top"><a href="#set_env-3">set_env/3</a></td><td>
 Sets the value of configuration parameter <tt>Key</tt> for <tt>App</tt>.</td></tr><tr><td valign="top"><a href="#set_env_from_config-1">set_env_from_config/1</a></td><td> 
@@ -293,13 +293,13 @@ the default value.
 
 Example:
 
-If you call `doteki:get_env(app, key)`, id the `APP_KEY` environment
+If you call `doteki:get_env(app, key)`, if the `APP_KEY` environment
 variable is set, _doteki_ will return it value. Else it will search for an existing
 value for the `key` for the `app` in the configuration.
 
 Calling `doteki:get_env([app, keyone, keytwo], "default")` return :
 
-* the value of the environment variable `APP_KEYONE_KEYTWO` of it exists
+* the value of the environment variable `APP_KEYONE_KEYTWO` if it exists
 
 * else the value for `keytwo` in the dict returned by `keyone` for the `app`
 
@@ -333,6 +333,15 @@ Calling `doteki:get_env([app, keyone, keytwo], "default")` return :
 
 * else `"default"`
 
+
+<a name="register_datasource-1"></a>
+
+### register_datasource/1 ###
+
+<pre><code>
+register_datasource(Module::atom()) -&gt; {ok, pid()} | {error, term()}
+</code></pre>
+<br />
 
 <a name="reload_env-0"></a>
 

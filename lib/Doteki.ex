@@ -6,6 +6,9 @@ defmodule Doteki do
   def unquote(:"main")(arg1) do
     :erlang.apply(:"doteki", :"main", [arg1])
   end
+  def unquote(:"register_datasource")(arg1) do
+    :erlang.apply(:"doteki", :"register_datasource", [arg1])
+  end
   def unquote(:"set_env")(arg1, arg2, arg3) do
     :erlang.apply(:"doteki", :"set_env", [arg1, arg2, arg3])
   end
