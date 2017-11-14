@@ -3,6 +3,7 @@
 	, {vsn, "1.1.0"}
 	, {modules, []}
 	, {registered, []}
+  , {mod, {doteki_app, []}}
 	, {applications, [kernel,stdlib]}
 
   , {maintainers, ["Gregoire Lejeune"]}

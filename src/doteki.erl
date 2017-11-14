@@ -37,6 +37,7 @@
          , compile/1
          , reload_env/0
          , main/1
+         , register_datasource/1
         ]).
 
 -ifdef(TEST).
@@ -64,6 +65,17 @@ main(_) ->
   application:load(?MODULE),
   {ok, Vsn} = application:get_key(?MODULE, vsn),
   io:format("~s ~s~n~nUsage: ~s <in.config> <out.config> [<ebin paths>, ...]~n", [?MODULE, Vsn, ?MODULE]).
+
+% @doc
+% @end
+-spec register_datasource(Module :: atom()) -> {ok, pid()} | {error, term()}.
+register_datasource(Module) when is_atom(Module) ->
+  case application:ensure_all_started(doteki) of
+    {ok, _} ->
+      doteki_sup:start_child(Module);
+    _ ->
+      {error, start_failed}
+  end.
 
 % @doc
 % Sets the value of configuration parameter <tt>Key</tt> for <tt>App</tt>.
@@ -211,13 +223,13 @@ get_env(Path) when is_list(Path) ->
 %
 % Example:
 %
-% If you call <tt>doteki:get_env(app, key)</tt>, id the <tt>APP_KEY</tt> environment
+% If you call <tt>doteki:get_env(app, key)</tt>, if the <tt>APP_KEY</tt> environment
 % variable is set, <i>doteki</i> will return it value. Else it will search for an existing
 % value for the <tt>key</tt> for the <tt>app</tt> in the configuration.
 %
 % Calling <tt>doteki:get_env([app, keyone, keytwo], "default")</tt> return :
 % <ul>
-%   <li>the value of the environment variable <tt>APP_KEYONE_KEYTWO</tt> of it exists</li>
+%   <li>the value of the environment variable <tt>APP_KEYONE_KEYTWO</tt> if it exists</li>
 %   <li>else the value for <tt>keytwo</tt> in the dict returned by <tt>keyone</tt> for the <tt>app</tt></li>
 %   <li>else <tt>"default"</tt></li>
 % </ul>
@@ -591,6 +603,8 @@ get_one_env([App|Keys] = Path, Default) ->
       Env = application:get_all_env(App),
       Result = find_env(Keys, Env, Default),
       case compile_term(Result) of
+        {ok, Default} ->
+          doteki_sup:get_first(Path, Default);
         {ok, CompiledResult} ->
           CompiledResult;
         undefined ->
