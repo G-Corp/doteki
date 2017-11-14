@@ -8,6 +8,7 @@ __Version:__ 1.0.0
 
 __Authors:__ Gregoire Lejeune ([`gregoire.lejeune@botsunit.com`](mailto:gregoire.lejeune@botsunit.com)).
 
+[![Build Status](https://travis-ci.org/G-Corp/doteki.svg?branch=master)](https://travis-ci.org/G-Corp/doteki)
 [![Hex.pm version](https://img.shields.io/hexpm/v/doteki.svg?style=flat-square)](https://hex.pm/packages/doteki)
 [![Hex.pm downloads](https://img.shields.io/hexpm/dt/doteki.svg?style=flat-square)](https://hex.pm/packages/doteki)
 [![License](https://img.shields.io/hexpm/l/doteki.svg?style=flat-square)](https://hex.pm/packages/doteki)
