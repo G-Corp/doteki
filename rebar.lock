@@ -1,4 +1,6 @@
-[{<<"bucs">>,
-  {git,"https://github.com/G-Corp/bucs.git",
-       {ref,"7b64f87f92dca0e6cb6eafc5535cfbf1fa0bdbd9"}},
-  0}].
+{"1.1.0",
+[{<<"bucs">>,{pkg,<<"bucs">>,<<"1.0.15">>},0}]}.
+[
+{pkg_hash,[
+ {<<"bucs">>, <<"44FC10DC863184FB99B1B7D25AF5B1FA06355D0003800629668FBC37F3F9B6BD">>}]}
+].
