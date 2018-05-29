@@ -5,7 +5,6 @@
 	, {registered, []}
 	, {applications, [kernel,stdlib]}
 
-  , {maintainers, ["Gregoire Lejeune"]}
   , {licenses, ["BSD-3"]}
   , {links, [{"Github", "https://github.com/G-Corp/doteki"}]}
   , {files, ["src/*"
